@@ -4,7 +4,7 @@
 I will try to put together a very simple description of a compiled Java class file format. Obviously, loading and interpreting *.class file ithe very first thing we ne need to do in order to execute any java code so i thought it come in very handy to describe it's realatively complex nature in simple words.
 
 ### Class File Layout
-The table below describes a high-levelstructure of class file. Notice how the constant pool is the most important part of the class declaration. It holds not only constant values used in methods code but also names of fields, classes and interfaces and their metadata. Most of other fields are simply pointing to elements of the constant pool, which also usualy contain indexes to other elements of the same constant pool. These may seem mind-bending but it saves a lot of space by avoiding duplications of literals.
+The table below describes a high-level structure of the class file. Notice how the constant pool is the most important part of the class declaration. It holds not only constant values used in methods code but also names of fields, classes and interfaces and their metadata. Most of other fields are simply pointing to elements of the constant pool, which also usually contains indices to other elements of the same constant pool. This may seem mind-bending but it saves a lot of space avoiding duplications of literals.
 
 
 | Field              | size | description                                                                   |
