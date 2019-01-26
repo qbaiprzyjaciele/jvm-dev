@@ -2,11 +2,10 @@
  * @author Jakub Smorąg
  */
 
-
-
 #include "stdio.h"
 #include "stdlib.h"
 #include "constant_field_list.h"
+#include "endian_conversions.h"
 
 typedef struct CONSTANT_Class_info 
 {
@@ -147,6 +146,7 @@ int main()
 	char bytes[4] = {'a','b','a','a'};
 	FILE * classFile;
 	char cafebabe[4];
+	unsigned int *cafebabe_int  = 0;
 	unsigned short minor_version;
 	unsigned short major_version;
 	unsigned short constant_pool_count;
@@ -176,12 +176,13 @@ int main()
 	fread(cafebabe,sizeof(char)*4,1,classFile);
 	fread(&minor_version,sizeof(unsigned short),1,classFile);
 	fread(&major_version,sizeof(unsigned short),1,classFile);
-
+	
 	printf("cafebabe[0] = %d",(int)cafebabe[0]);
 	printf("cafebabe[1] = %d",(int)cafebabe[1]);
 	printf("cafebabe[2] = %d",(int)cafebabe[2]);
 	printf("cafebabe[3] = %d",(int)cafebabe[3]);
-
+	cafebabe_int =  (unsigned int*)cafebabe;
+	swap_bytes_4(cafebabe_int);	
 	if(((unsigned short)cafebabe[0]) == 0xfe)
 	{
 		printf("cafebabe[0] == 0xfe\n");
