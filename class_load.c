@@ -121,14 +121,23 @@ typedef struct simple_struct
 int big_endian_int(char * bytes) 
 {
 	//TODO
-	return 1;
+	char temp;
+	temp = bytes[3];
+	bytes[0] = bytes[3];
+	bytes[3] = temp;
+	temp = bytes[1];
+	bytes[1] = bytes[2];
+	bytes[2] = temp;
+	int *int_value = (int*)bytes;
+	return *int_value;
 }	
 
-unsigned short big_endian_unsigned_short(char bytes)
+unsigned short big_endian_unsigned_short(char * bytes)
 {
 	//TODO
 	return 1;
 }
+
 
 
 
