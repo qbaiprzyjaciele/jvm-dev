@@ -138,8 +138,6 @@ unsigned short big_endian_unsigned_short(char * bytes)
 }
 
 
-
-
 int main()
 {
 	void * constant_pool = (void*)malloc(4);
@@ -182,7 +180,15 @@ int main()
 	printf("cafebabe[2] = %d",(int)cafebabe[2]);
 	printf("cafebabe[3] = %d",(int)cafebabe[3]);
 	cafebabe_int =  (unsigned int*)cafebabe;
+	printf("cafebabe_int bigendian = %d\n", *cafebabe_int);
 	swap_bytes_4(cafebabe_int);	
+	printf("cafebabe_int swapped = %d\n", *cafebabe_int);
+	cafebabe = (char*)cafebabe_int;
+	printf("cafebabe[0] = %d\n", (int)cafebabe[0]);
+	printf("cafebabe[1] = %d\n", (int)cafebabe[1]);
+	printf("cafebabe[2] = %d\n", (int)cafebabe[2]);
+	printf("cafebabe[3] = %d\n", (int)cafebabe[3]);
+
 	if(((unsigned short)cafebabe[0]) == 0xfe)
 	{
 		printf("cafebabe[0] == 0xfe\n");
